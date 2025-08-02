@@ -1,0 +1,17 @@
+.wrapper-content{
+    min-height: var(--common-content-min-heigh);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .container-content{
+        width: var(--common-content-width);
+        min-height: var(--common-content-min-heigh);
+        display: flex;
+        flex-direction: row;
+        .children-content{
+            background-color: #ccc;
+            flex: 1;
+        }
+    }
+}
