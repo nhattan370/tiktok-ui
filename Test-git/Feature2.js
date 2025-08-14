@@ -1,1 +1,3 @@
-//Day la tinh nang 2
+function Hello(){
+    return 'Hello';
+}
