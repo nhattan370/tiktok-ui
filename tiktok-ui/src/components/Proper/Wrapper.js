@@ -1,7 +1,9 @@
 import styles from './Wrapper.module.scss';
-function Wrapper({children}){
+import classNames from 'classnames/bind';
+function Wrapper({children, className}){
+    const cx = classNames.bind(styles);
     return(
-        <div className={styles.wrapper}>
+        <div className={cx('wrapper', className)}>
             {children}
         </div>
     )

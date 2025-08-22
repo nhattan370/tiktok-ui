@@ -10,11 +10,12 @@ function Button({to, href, onClick,
                 children, 
                 leftIcon,
                 rightIcon,
+                className,
                 ...passProps}){
     const cx = classNames.bind(style);
     let Comp = 'button';
     const classes = cx('wrapper',{
-        primary, outline, small, large, text, disable, rounded, leftIcon, rightIcon
+        primary, outline, small, large, text, disable, rounded, leftIcon, rightIcon, [className]:className
     });
     const props = {
         onClick,

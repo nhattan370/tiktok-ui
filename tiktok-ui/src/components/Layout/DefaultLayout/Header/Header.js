@@ -3,14 +3,32 @@ import images from '../../../../assets/image';
 import {Wrapper as ProperWrapper} from '../../../Proper/Wrapper';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faCircleXmark, faMagnifyingGlass, faSignIn, faSpinner} from '@fortawesome/free-solid-svg-icons';
+import {faCircleQuestion, faCircleXmark, faEarthAsia, faEllipsisVertical, faKeyboard, faMagnifyingGlass, faSignIn, faSpinner} from '@fortawesome/free-solid-svg-icons';
+import classNames from 'classnames/bind'
 import Tippy from '@tippyjs/react/headless';
 import { useState } from 'react';
 import AccountItem from '../../../AccountItem/AcountItem';
 import Button from '../../../Button/index';
+import Menu from '../../../Proper/Menu';
 
 function Header(){
-    const [resultSearch, setResultSearch] = useState([1,2]);
+    const [resultSearch, setResultSearch] = useState([]);
+    const cx = classNames.bind(styles); 
+    const MENU_ITEMS = [
+        {
+            icon:<FontAwesomeIcon icon={faEarthAsia}></FontAwesomeIcon>,
+            title:'English'
+        },
+        {
+            icon:<FontAwesomeIcon icon={faCircleQuestion}></FontAwesomeIcon>,
+            title:'Feedback And Help', 
+            to: '/feedback'
+        },
+        {
+            icon:<FontAwesomeIcon icon={faKeyboard}></FontAwesomeIcon>,
+            title:'Keyboard And Shortcuts'
+        },
+    ]
     return (
             <header className={styles['wrap-header']}>
                 
@@ -50,7 +68,12 @@ function Header(){
                     </Tippy>
                     <div className={styles.action}>
                         <Button text>Upload</Button>
-                        <Button rounded>Login</Button>
+                        <Button primary>Login</Button>
+                    <Menu items={MENU_ITEMS} className={cx('menu-wrapper')}>
+                        <button className={cx('more-button')}>
+                            <FontAwesomeIcon icon={faEllipsisVertical}/>
+                        </button>
+                    </Menu>
                     </div>
                 </div>
             </header>

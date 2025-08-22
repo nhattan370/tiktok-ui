@@ -1,0 +1,16 @@
+.menu-items{
+    width: 270px;
+    .menu-item{
+        display: inline-block;
+        width: 100%;
+        text-align: start;
+        border-radius: 0;
+        font-weight: 500;
+        &:hover{
+            background-color: aqua;
+        }
+    }
+}
+.wrapper{
+    padding-bottom: 8px;
+}
