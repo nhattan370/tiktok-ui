@@ -14,10 +14,28 @@ import Menu from '../../../Proper/Menu';
 function Header(){
     const [resultSearch, setResultSearch] = useState([]);
     const cx = classNames.bind(styles); 
+    const handleChange = (item) => {
+        console.log(item);
+    }
     const MENU_ITEMS = [
         {
             icon:<FontAwesomeIcon icon={faEarthAsia}></FontAwesomeIcon>,
-            title:'English'
+            title:'English',
+            children:{
+                title: 'Language',
+                data: [
+                    {
+                        type: 'language',
+                        code: 'en',
+                        title:'English'
+                    },
+                    {
+                        type: 'language',
+                        code: 'vi',
+                        title: 'Tieng Viet'
+                    }
+                ]
+            }
         },
         {
             icon:<FontAwesomeIcon icon={faCircleQuestion}></FontAwesomeIcon>,
@@ -69,7 +87,7 @@ function Header(){
                     <div className={styles.action}>
                         <Button text>Upload</Button>
                         <Button primary>Login</Button>
-                    <Menu items={MENU_ITEMS} className={cx('menu-wrapper')}>
+                    <Menu items={MENU_ITEMS} className={cx('menu-wrapper')} onChange={handleChange}>
                         <button className={cx('more-button')}>
                             <FontAwesomeIcon icon={faEllipsisVertical}/>
                         </button>
