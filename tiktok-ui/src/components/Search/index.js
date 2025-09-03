@@ -1,19 +1,29 @@
 import TippyHeadless from '@tippyjs/react/headless';
 import styles from './Search.module.scss'
 import {Wrapper as ProperWrapper} from '../Proper/Wrapper';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCircleXmark, faMagnifyingGlass, faSpinner, } from '@fortawesome/free-solid-svg-icons';
 import AccountItem from '../AccountItem/AccountItem';
 import classNames from 'classnames/bind';
+import { SearchIcon } from '../Icon';
 
 const cx = classNames.bind(styles);
 function Search(){
+    const [searchValue, setSearchValue] = useState('');
     const [resultSearch, setResultSearch] = useState([1,2]);
+    const [showResult, setShowResult] = useState(true)
+
+    const inputRef = useRef();
+
+    const handleClickOutside = () => {
+        setShowResult(false)
+    }
     return (
         <TippyHeadless
-            visible={resultSearch.length>0}
+            visible={showResult && resultSearch.length>0}
             interactive={true}
+            onClickOutside={handleClickOutside}
             render={attrs => (
                 <div className={styles['search-result']} tabIndex="-1" {...attrs}>
                     <ProperWrapper>
@@ -28,16 +38,28 @@ function Search(){
             )}
         >
         <div className={cx('search')}>
-            <input type='text' placeholder='Search account and video' spellCheck='false'/>
+            <input type='text' 
+                   ref={inputRef}
+                   placeholder='Search account and video' 
+                   spellCheck='false' 
+                   value={searchValue}
+                   onChange={(e)=>setSearchValue(e.target.value)} 
+                   onFocus={()=>{setShowResult(true)}}
+                   />
             
-            <button className={cx('close')}>
-                <FontAwesomeIcon icon={faCircleXmark}/>    
-            </button>
-            <button className={cx('load')}>
+            {/* <button className={cx('load')}>
                 <FontAwesomeIcon icon={faSpinner}/>
-            </button>
+                </button> */}
+            {!!searchValue && (
+                <button className={cx('close')}>
+                    <FontAwesomeIcon icon={faCircleXmark} onClick={()=>{
+                        inputRef.current.focus()
+                        setSearchValue('')
+                    }}/>    
+                </button>
+            )}
             <button className={styles['search-btn']}>
-                <FontAwesomeIcon icon={faMagnifyingGlass}/>
+                <SearchIcon></SearchIcon>
             </button>
         </div>
         </TippyHeadless>
