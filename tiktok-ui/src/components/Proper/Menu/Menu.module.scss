@@ -1,14 +1,17 @@
 .menu-items{
     width: 270px;
-    .menu-item{
-        display: inline-block;
-        width: 100%;
-        text-align: start;
-        border-radius: 0;
-        font-weight: 500;
-        &:hover{
-            background-color: aqua;
-        }
+}
+.menu-item{
+    display: inline-block;
+    width: 100%;
+    text-align: start;
+    border-radius: 0;
+    font-weight: 500;
+    &:hover{
+        background-color: aqua;
+    }
+    &.separate{
+        border-top: 1px solid rgba(22, 24, 35, 0.12);
     }
 }
 .wrapper{
