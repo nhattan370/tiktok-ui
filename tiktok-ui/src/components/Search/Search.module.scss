@@ -63,3 +63,14 @@
     position: absolute;
     right: 60px;
 }
+@keyframes spinner {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.load{
+    animation: spinner 1s linear infinite;
+}
