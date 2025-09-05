@@ -1,7 +1,7 @@
 function MessageIcon({width="3.2rem", height="3.2rem", className}){
     return <svg 
                 fill="currentColor" 
-                class={className} 
+                className={className} 
                 viewBox="0 0 48 48" 
                 xmlns="http://www.w3.org/2000/svg" 
                 width={width} 

@@ -1,5 +1,6 @@
 import styles from './Header.module.scss'
 import images from '../../../../assets/image';
+import RouteConfig from '../../../../routeConfig/routes';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCircleQuestion, faCoins, faEarthAsia, faEllipsisVertical, faGear, faKeyboard, faSignOut, faUser} from '@fortawesome/free-solid-svg-icons';
@@ -11,6 +12,7 @@ import Menu from '../../../Proper/Menu';
 import { MessageIcon, UploadIcon } from '../../../Icon';
 import Image from '../../../Image';
 import Search from '../../../Search';
+import { Link } from 'react-router-dom';
 
 function Header(){
     const cx = classNames.bind(styles); 
@@ -76,9 +78,9 @@ function Header(){
             <header className={styles['wrap-header']}>
                 
                 <div className={styles['contain-header']}>
-                    <div className={styles.logo}>
+                    <Link to={RouteConfig.home} className={styles.logo}>
                         <img src={images.logo} alt='Tiktok'/>
-                    </div>
+                    </Link>
                     <Search/>
                     <div className={cx('action')}>
                         {
