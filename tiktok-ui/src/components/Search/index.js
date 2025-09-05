@@ -1,13 +1,15 @@
 import TippyHeadless from '@tippyjs/react/headless';
 import styles from './Search.module.scss'
-import {Wrapper as ProperWrapper} from '../Proper/Wrapper';
 import { useState, useRef, useEffect } from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCircleXmark, faSpinner, } from '@fortawesome/free-solid-svg-icons';
-import AccountItem from '../AccountItem/AccountItem';
 import classNames from 'classnames/bind';
+
+import {Wrapper as ProperWrapper} from '../Proper/Wrapper';
+import AccountItem from '../AccountItem/AccountItem';
 import { SearchIcon } from '../Icon';
 import UseDebounce from '../../hooks/useDebounce';
+import * as searchService  from '../../apiService/searchService';
 
 const cx = classNames.bind(styles);
 function Search(){
@@ -24,13 +26,13 @@ function Search(){
             setResultSearch([])
             return;
         }
-        setLoading(true);
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounce)}&type=less`)
-        .then(res => res.json())
-        .then((res)=>{
-            setResultSearch(res.data);
+        const fetchApi = async()=>{
+            setLoading(true);
+            const result = await searchService.search(debounce, 'less');
+            setResultSearch(result);
             setLoading(false)
-        })
+        }
+        fetchApi();
     },[debounce])
 
     const handleClickOutside = () => {
