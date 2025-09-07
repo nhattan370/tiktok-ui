@@ -1,7 +1,7 @@
 import "./components/GlobalStyle.scss";
 import {Routes, Route} from 'react-router-dom'
 import { PublicRouter } from "./pages/routes/routes";
-import DefaultLayout from "./components/Layout/DefaultLayout/DefaultLayout";
+import DefaultLayout from "./layout/DefaultLayout/DefaultLayout";
 
 function App() {
     return (

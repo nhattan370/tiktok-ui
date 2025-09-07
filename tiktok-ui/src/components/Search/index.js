@@ -9,7 +9,7 @@ import {Wrapper as ProperWrapper} from '../Proper/Wrapper';
 import AccountItem from '../AccountItem/AccountItem';
 import { SearchIcon } from '../Icon';
 import UseDebounce from '../../hooks/useDebounce';
-import * as searchService  from '../../apiService/searchService';
+import * as searchService  from '../../services/searchService';
 
 const cx = classNames.bind(styles);
 function Search(){
@@ -20,6 +20,7 @@ function Search(){
 
     const inputRef = useRef();
     const debounce = UseDebounce(searchValue, 500);
+    // console.log("Search received ref:", ref);
 
     useEffect(()=>{
         if(!debounce.trim()) {

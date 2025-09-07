@@ -1,18 +1,18 @@
 import styles from './Header.module.scss'
-import images from '../../../../assets/image';
-import RouteConfig from '../../../../routeConfig/routes';
+import images from '../../../assets/image';
+import RouteConfig from '../../../routeConfig/routes';
 import { dataLanguage } from './language';
-import Button from '../../../Button/index';
-import Menu from '../../../Proper/Menu';
-import Image from '../../../Image';
-import Search from '../../../Search';
+import Button from '../../../components/Button/index';
+import Menu from '../../../components/Proper/Menu';
+import Image from '../../../components/Image';
+import Search from '../../../components/Search';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCircleQuestion, faCoins, faEarthAsia, faEllipsisVertical, faGear, faKeyboard, faSignOut, faUser} from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind'
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-import { MessageIcon, UploadIcon } from '../../../Icon';
+import { MessageIcon, UploadIcon } from '../../../components/Icon';
 import { Link } from 'react-router-dom';
 
 function Header(){

@@ -12,3 +12,4 @@ function Image({src, alt, className, fallback:customFallback = images.no_image, 
     return <img className={cx('wrapper', className)} src={fallback || src} alt={alt} {...props} onError={handleError}/>
 }
 export default Image;
+
