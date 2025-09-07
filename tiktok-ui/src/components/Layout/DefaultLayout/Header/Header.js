@@ -1,17 +1,18 @@
 import styles from './Header.module.scss'
 import images from '../../../../assets/image';
 import RouteConfig from '../../../../routeConfig/routes';
+import { dataLanguage } from './language';
+import Button from '../../../Button/index';
+import Menu from '../../../Proper/Menu';
+import Image from '../../../Image';
+import Search from '../../../Search';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCircleQuestion, faCoins, faEarthAsia, faEllipsisVertical, faGear, faKeyboard, faSignOut, faUser} from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind'
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-import Button from '../../../Button/index';
-import Menu from '../../../Proper/Menu';
 import { MessageIcon, UploadIcon } from '../../../Icon';
-import Image from '../../../Image';
-import Search from '../../../Search';
 import { Link } from 'react-router-dom';
 
 function Header(){
@@ -26,18 +27,7 @@ function Header(){
             title:'English',
             children:{
                 title: 'Language',
-                data: [
-                    {
-                        type: 'language',
-                        code: 'en',
-                        title:'English'
-                    },
-                    {
-                        type: 'language',
-                        code: 'vi',
-                        title: 'Tieng Viet'
-                    }
-                ]
+                data: [...dataLanguage]
             }
         },
         {
@@ -75,9 +65,9 @@ function Header(){
         },
     ]
     return (
-            <header className={styles['wrap-header']}>
+            <header className={cx('wrap-header')}>
                 
-                <div className={styles['contain-header']}>
+                <div className={cx('contain-header')}>
                     <Link to={RouteConfig.home} className={styles.logo}>
                         <img src={images.logo} alt='Tiktok'/>
                     </Link>

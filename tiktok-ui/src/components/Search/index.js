@@ -39,30 +39,32 @@ function Search(){
         setShowResult(false)
     }
     return (
-        <TippyHeadless
+        // Using a wrapper <div> tag around the reference element solves this by creating a new parentNode context. 
+        <div>
+            <TippyHeadless
             visible={showResult && resultSearch.length>0}
             interactive={true}
             onClickOutside={handleClickOutside}
             render={attrs => (
-                <div className={styles['search-result']} tabIndex="-1" {...attrs}>
-                    <ProperWrapper>
-                        <p className={styles['search-title']}>Account</p>
-                        {resultSearch.map((result)=>{
-                            return <AccountItem key={result.id} data={result}/>
-                        })}
-                    </ProperWrapper>
-                </div>
-            )}
-        >
+                    <div className={styles['search-result']} tabIndex="-1" {...attrs}>
+                        <ProperWrapper>
+                            <p className={styles['search-title']}>Account</p>
+                            {resultSearch.map((result)=>{
+                                return <AccountItem key={result.id} data={result}/>
+                            })}
+                        </ProperWrapper>
+                    </div>
+                )}
+            >
         <div className={cx('search')}>
             <input type='text' 
-                   ref={inputRef}
-                   placeholder='Search account and video' 
-                   spellCheck='false' 
-                   value={searchValue}
-                   onChange={(e)=>setSearchValue(e.target.value)} 
-                   onFocus={()=>{setShowResult(true)}}
-                   />
+                ref={inputRef}
+                placeholder='Search account and video' 
+                spellCheck='false' 
+                value={searchValue}
+                onChange={(e)=>setSearchValue(e.target.value)} 
+                onFocus={()=>{setShowResult(true)}}
+            />
             
             {loading && <button className={cx('load')}><FontAwesomeIcon icon={faSpinner}/></button>}
             {!loading && !!searchValue && (
@@ -78,6 +80,7 @@ function Search(){
             </button>
         </div>
         </TippyHeadless>
+        </div>
     )
 }
 export default Search;
