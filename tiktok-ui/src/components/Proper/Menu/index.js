@@ -38,7 +38,7 @@ function Menu({children, items=[], hideOnClick=false, onChange=defaultFn}){
             render={attrs => (
                 <div className={cx('menu-items')} tabIndex="-1" {...attrs}>
                     <ProperWrapper className={cx('wrapper')}>
-                        {history.length > 1 && <Header title='Language' onBack = {()=>{setHistory(prev => prev.slice(0,prev.length-1))}}></Header>}
+                        {history.length > 1 && <Header title={current.title} onBack = {()=>{setHistory(prev => prev.slice(0,prev.length-1))}}></Header>}
                         <div className={cx('menu-body')}>{renderItems()}</div>
                     </ProperWrapper>
                 </div>
