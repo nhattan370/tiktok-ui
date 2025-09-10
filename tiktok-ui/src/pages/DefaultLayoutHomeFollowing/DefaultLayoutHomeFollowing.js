@@ -1,4 +1,4 @@
-import SideBar from "./SideBar/SideBar";
+import SideBar from "../../components/SideBar/SideBar";
 import styles from './DefaultLayoutHomeFollowing.module.scss'
 
 function DefaultLayoutHomeFollowing({children}){

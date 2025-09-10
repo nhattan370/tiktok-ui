@@ -3,7 +3,7 @@ import images from '../../../assets/image';
 import RouteConfig from '../../../routeConfig/routes';
 import { dataLanguage } from './language';
 import Button from '../../../components/Button/index';
-import Menu from '../../../components/Proper/Menu';
+import Menu from '../../../components/Proper/Menu/Menu';
 import Image from '../../../components/Image';
 import Search from '../../../components/Search';
 
